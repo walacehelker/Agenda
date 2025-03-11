@@ -1,0 +1,81 @@
+﻿@page "{TipoCadastro?}"
+@using Dados
+@model MyApp.Pages.CadUsuarioModel
+@{
+    ViewData["Title"] = "Cadastro de Usuário";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" asp-for="Pessoa.Id" />
+                <input type="hidden" asp-for="Pessoa.TipoUsuario" />
+
+                <div class="mb-3">
+                    <label asp-for="Pessoa.Nome" class="form-label">Nome Completo</label>
+                    <input asp-for="Pessoa.Nome" class="form-control" placeholder="Digite o nome completo" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Pessoa.DataNascimento" class="form-label">Data de Nascimento</label>
+                    <input asp-for="Pessoa.DataNascimento" type="date" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Pessoa.NomeMae" class="form-label">Nome da Mãe</label>
+                    <input asp-for="Pessoa.NomeMae" class="form-control" placeholder="Digite o nome da sua Mãe" />
+                </div>
+
+                @if (Model.Pessoa.TipoUsuario == TipoUsuarioEnum.Profissional)
+                {
+
+                    <div class="mb-3">
+                        <label asp-for="Pessoa.Cpf" class="form-label">CPF</label>
+                        <input asp-for="Pessoa.Cpf" class="form-control" placeholder="Digite o CPF" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Pessoa.Rg" class="form-label">RG</label>
+                        <input asp-for="Pessoa.Rg" class="form-control" placeholder="Digite o RG" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Pessoa.Crm" class="form-label">CRM</label>
+                        <input asp-for="Pessoa.Crm" class="form-control" placeholder="Digite o CRM (se aplicável)" />
+                    </div>
+                }
+                else
+                {
+                    <div class="mb-3">
+                        <label asp-for="Pessoa.Cnpj" class="form-label">CNPJ</label>
+                        <input asp-for="Pessoa.Cnpj" class="form-control" placeholder="Digite o CNPJ" required />
+                    </div>
+                }
+
+
+                <div class="mb-3">
+                    <label asp-for="Pessoa.Usuario" class="form-label">Usuario</label>
+                    <input asp-for="Pessoa.Usuario" class="form-control" placeholder="Digite o Usuário" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Pessoa.Email" class="form-label">Email</label>
+                    <input asp-for="Pessoa.Email" class="form-control" placeholder="Digite o Email" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Pessoa.Senha" class="form-label">Senha</label>
+                    <input asp-for="Pessoa.Senha" class="form-control" placeholder="Digite a Senha" />
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-4">Cadastrar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

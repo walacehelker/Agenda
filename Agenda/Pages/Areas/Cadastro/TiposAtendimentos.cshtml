@@ -1,0 +1,121 @@
+﻿@page
+@model Agenda.Pages.Areas.Cadastro.TiposAtendimentosModel
+@{
+    ViewData["Title"] = "Tipos de Atendimentos";
+    Layout = "_Layout";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+    }
+
+    table.table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f9f9f9;
+        margin-top: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        table.table th,
+        table.table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table.table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table.table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .btn-adicionar {
+        background-color: #28a745;
+        color: white;
+        padding: 8px 16px; /* Botão menor */
+        font-size: 14px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 20px; /* Margem inferior para separá-lo da tabela */
+        cursor: pointer;
+        float: right; /* Alinhar à direita */
+    }
+
+        .btn-adicionar:hover {
+            background-color: #218838;
+        }
+
+    .btn-editar {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+        .btn-editar i {
+            font-size: 18px;
+            color: #007bff;
+        }
+
+        .btn-editar:hover i {
+            color: #0056b3;
+        }
+
+    .hidden {
+        display: none;
+    }
+
+    .table-container {
+        position: relative;
+        overflow-x: auto;
+    }
+</style>
+
+<h1>Tipos de Atendimentos</h1>
+
+<div class="table-container">
+    <!-- Botão de adicionar à direita e menor -->
+    <button class="btn-adicionar" onclick="location.href='@Url.Page("/Areas/Cadastro/TiposAtendimentosCad")'">
+        <i class="fas fa-plus"></i> Adicionar
+    </button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ações</th> <!-- Nova coluna para ações -->
+                <th class="hidden">ID</th> <!-- Coluna ID Oculta -->
+                <th>Nome</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TipoAtendimentoList)
+            {
+                <tr>
+                    <td>
+                        <button class="btn-editar" onclick="editTipoAtendimento('@item.Id')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </td>
+                    <td class="hidden">@item.Id</td> <!-- Celula ID Oculta -->
+                    <td>@item.Nome</td>
+                    <td>@item.Descricao</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function editTipoAtendimento(id) {
+        location.href = '@Url.Page("/Areas/Cadastro/TiposAtendimentosCad")?Id=' + id;
+    }
+</script>

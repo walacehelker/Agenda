@@ -1,0 +1,32 @@
+﻿@page "{Id?}"
+@model Agenda.Pages.Areas.Cadastro.TiposAtendimentosCadModel
+@{
+    ViewData["Title"] = "Tipos de Atendimentos";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" asp-for="EntityVm.Id" />
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.Nome" class="form-label">Tipo do atendimento</label>
+                    <input asp-for="EntityVm.Nome" class="form-control" placeholder="Digite o tipo do atendimento" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.Descricao" class="form-label">Descrição</label>
+                    <input asp-for="EntityVm.Descricao" class="form-control" placeholder="Descrição" required />
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-4">Cadastrar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

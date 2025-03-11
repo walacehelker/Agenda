@@ -1,0 +1,60 @@
+﻿@page "{Id?}"
+@model Agenda.Pages.Areas.Cadastro.AtendimentosCadModel
+@{
+    ViewData["Title"] = "Tipos de Atendimentos";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" asp-for="EntityVm.Id" />
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.TipoAtendimentoId" class="form-label">Tipo de Atendimento</label>
+                    <select asp-for="EntityVm.TipoAtendimentoId" class="form-control">
+                        <option value="">Selecione o tipo de atendimento</option>
+                        @foreach (var item in Model.TipoAtendimentoList)
+                        {
+                            <option value="@item.Id">@item.Nome</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.PessoaId" class="form-label">Pessoa</label>
+                    <select asp-for="EntityVm.PessoaId" class="form-control">
+                        <option value="">Selecione a pessoa</option>
+                        @foreach (var item in Model.PessoaList)
+                        {
+                            <option value="@item.Id">@item.Nome</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.Descricao" class="form-label">Descrição do atendimento</label>
+                    <input asp-for="EntityVm.Descricao" class="form-control" placeholder="Digite a descrição do atendimento" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.DataAtendimento" class="form-label">Data do atendimento</label>
+                    <input asp-for="EntityVm.DataAtendimento" type="date" class="form-control" required />
+                </div>
+
+                <div class="text-center">
+                    @if(!Model.Edicao)
+                    {
+                        <button type="submit" class="btn btn-primary px-4">Cadastrar</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary px-4">Atualizar</button>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@page "{Id?}"
+@model Agenda.Pages.Areas.Cadastro.PessoaCadModel
+@{
+    ViewData["Title"] = "Cadastro de Usuário";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" asp-for="EntityVm.Id" />
+                <input type="hidden" asp-for="EntityVm.TipoUsuario" />
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.Nome" class="form-label">Nome Completo</label>
+                    <input asp-for="EntityVm.Nome" class="form-control" placeholder="Digite o nome completo" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.DataNascimento" class="form-label">Data de Nascimento</label>
+                    <input asp-for="EntityVm.DataNascimento" type="date" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.NomeMae" class="form-label">Nome da Mãe</label>
+                    <input asp-for="EntityVm.NomeMae" class="form-control" placeholder="Digite o nome da sua Mãe" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.Cpf" class="form-label">CPF</label>
+                    <input asp-for="EntityVm.Cpf" class="form-control" placeholder="Digite o CPF" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.Rg" class="form-label">RG</label>
+                    <input asp-for="EntityVm.Rg" class="form-control" placeholder="Digite o RG"/>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.Crm" class="form-label">CRM</label>
+                    <input asp-for="EntityVm.Crm" class="form-control" placeholder="Digite o CRM (se aplicável)" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EntityVm.Cnpj" class="form-label">Cnpj</label>
+                    <input asp-for="EntityVm.Cnpj" class="form-control" placeholder="Digite o Cnpj (se aplicável)" />
+                </div>
+
+                @if (!Model.PessoaCadastrada)
+                {
+                    <div class="mb-3">
+                        <label asp-for="EntityVm.Usuario" class="form-label">Usuario</label>
+                        <input asp-for="EntityVm.Usuario" class="form-control" placeholder="Digite o Usuário" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="EntityVm.Email" class="form-label">Email</label>
+                        <input asp-for="EntityVm.Email" class="form-control" placeholder="Digite o Email" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="EntityVm.Senha" class="form-label">Senha</label>
+                        <input asp-for="EntityVm.Senha" class="form-control" placeholder="Digite a Senha" />
+                    </div>
+                }
+  
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-4">Cadastrar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
